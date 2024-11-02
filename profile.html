@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Mohammed_Abdul_Latheef</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ecf0f1;
+        }
+        .item{
+            color: white;
+            margin: 10px;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            padding: 10px 20px;
+            color: #ecf0f1;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar-brand {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .navbar-links {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar-links a:hover {
+            color: #3498db;
+        }
+
+        /* Profile Section */
+        .profile {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 60px;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: #34495e;
+            transition: left 0.3s ease;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar h2 {
+            color: #ecf0f1;
+            margin-bottom: 10px;
+        }
+
+        .section-link {
+            color: #ecf0f1;
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .section-link:hover {
+            color: #3498db;
+        }
+
+        /* Content Sections */
+        .content {
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 800px;
+            display: none; /* Hide content by default */
+        }
+
+        .section {
+            background-color: #ffffff;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .section h2 {
+            margin-bottom: 10px;
+        }
+
+        .section-content {
+            padding: 10px 0;
+        }
+    </style>
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('open');
+        }
+
+        function showSection(sectionId) {
+            // Hide the profile section
+            document.querySelector('.profile').style.display = 'none';
+
+            // Hide all content sections
+            document.querySelectorAll('.content').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            if (sectionId) {
+                const selectedSection = document.getElementById(sectionId);
+                if (selectedSection) {
+                    selectedSection.style.display = 'block';
+                }
+            }
+        }
+
+        function showHome() {
+            // Show the profile section
+            document.querySelector('.profile').style.display = 'block';
+            // Hide all sections
+            document.querySelectorAll('.content').forEach(section => {
+                section.style.display = 'none';
+            });
+        }
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-brand">MOHAMMED ABDUL LATHEEF</div>
+        <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <div class="section-link" onclick="showHome()">Home</div>
+        <div class="section-link" onclick="showSection('education')">Education</div>
+        <div class="section-link" onclick="showSection('skills')">Skills</div>
+        <div class="section-link" onclick="showSection('projects')">Projects & Internships</div>
+        <div class="section-link" onclick="showSection('additional')">Additional Info</div>
+        <div class="section-link" onclick="showSection('strengths')">Personal Strengths</div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="profile">
+        <img src="https://niva.vidyanikethan.edu/photographs/21121A02A7.jpg" alt="Profile Photo" class="profile-photo">
+        <h1>MOHAMMED ABDUL LATHEEF</h1>
+        <p>6303095505 | smdabdullatheef0403@gmail.com</p>
+        <p>ALUR, ANDHRA PRADESH - 518395, INDIA</p>
+        <div class="links">
+            <a class="item" href="https://www.linkedin.com/in/mabdullatheef/">LinkedIn</a> |
+            <a class="item" href="https://github.com/MALATHEEF">GitHub</a> |
+            <a class="item" href="https://leetcode.com/u/malatheef_443/">LeetCode</a>
+        </div>
+    </div>
+
+    <!-- Expandable Sections -->
+    <div id="education" class="content">
+        <div class="section">
+            <h2>Education</h2>
+            <div class="section-content">
+                <p><strong>Sree Vidyanikethan Engineering College</strong> (2021 - 2025) <br> GPA: 7.7</p>
+                <p><strong>Govt Junior College</strong> (2019 - 2021) <br> Grade: 88.3%</p>
+                <p><strong>Govt Boys High School</strong> (2018 - 2019) <br> GPA: 8.3</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="skills" class="content">
+        <div class="section">
+            <h2>Skills</h2>
+            <div class="section-content">
+                <p><strong>Programming Languages:</strong> JAVA (proficient), Python, C, VHDL.</p>
+                <p><strong>Web Technologies:</strong> HTML, CSS, JavaScript.</p>
+                <p><strong>Coursework:</strong> OOPS, DSA, Prompt Engineering.</p>
+                <p><strong>Embedded Systems:</strong> Knowledge of microcontrollers, interfacing, and real-time systems.</p>
+                <p><strong>Electric Vehicles:</strong> Understanding of EV technologies, battery management, and charging infrastructure.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="projects" class="content">
+        <div class="section">
+            <h2>Projects & Internships</h2>
+            <div class="section-content">
+                <p><strong>Photon eLearning Platform</strong> (2023)</p>
+                <p><strong>eCharge Bill Calculator</strong> (2024)</p>
+                <p><strong>Solar Photovoltaic System Design & Practice</strong> (2023)</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="additional" class="content">
+        <div class="section">
+            <h2>Additional Information</h2>
+            <div class="section-content">
+                <p><strong>Languages:</strong> English, Telugu, Hindi, Urdu.</p>
+                <p><strong>Community Involvement:</strong> Volunteer at ETA, Volunteer at NSS.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="strengths" class="content">
+        <div class="section">
+            <h2>Personal Strengths</h2>
+            <div class="section-content">
+                <ul>
+                    <li>Problem-Solving</li>
+                    <li>Quick Learner</li>
+                    <li>Self-Motivated</li>
+                    <li>Open-Minded</li>
+                    <li>Adaptability</li>
+                    <li>Team Collaboration</li>
+                    <li>Time Management</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
